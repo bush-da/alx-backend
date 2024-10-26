@@ -45,10 +45,10 @@ class Server:
         Returns:
             List[List]: The list of rows in the current page of the dataset.
         """
-        assert type(page) == int and type(page_size) == int
+        assert isinstance(page, int) and isinstance(page_size, int)
         assert page_size > 0 or page > 0
         start_idx, end_idx = index_range(page, page_size)
         datasets = self.dataset()
         if start_idx > len(datasets):
             return []
-        return datasets[start_idx : end_idx]
+        return datasets[start_idx:end_idx]
