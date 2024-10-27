@@ -60,4 +60,5 @@ class Server:
             current_index += 1
 
         next_index = current_index if current_index < total_items else None
-        return {'index': index, 'next_index': next_index, 'page_size': page_size, 'data': data}
+        return {'index': index, 'next_index': next_index,
+                'page_size': page_size, 'data': data}
