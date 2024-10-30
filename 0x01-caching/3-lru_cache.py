@@ -18,6 +18,8 @@ class LRUCache(BaseCaching):
 
     def get(self, key):
         """retrive a value from self.cache_data"""
+        if key and key in self.cache_data:
+            self.cache_data.move_to_end(key)
         return self.cache_data.get(key, None)
 
     def put(self, key, item):
