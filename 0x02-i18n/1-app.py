@@ -19,6 +19,7 @@ app.config.from_object(Config)
 
 babel = Babel()
 
+
 @app.route('/')
 def home():
     """home page"""
