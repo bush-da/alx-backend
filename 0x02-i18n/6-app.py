@@ -29,9 +29,9 @@ users = {
 def get_user() -> Union[Dict, None]:
     """Retrieves a user based on a user id.
     """
-    login_id = request.args.get('login_as')
+    login_id = request.args.get('login_as', '')
     if login_id:
-        return users.get(int(login_id))
+        return users.get(int(login_id), None)
     return None
 
 
@@ -51,11 +51,11 @@ def get_locale() -> str:
     if locale in app.config["LANGUAGES"]:
         return locale
 
-    if g.user and g.user.get('locale') in app.config('LANGUAGES'):
-        return g.user.get('locale')
+    if g.user and g.user['locale'] in app.config["LANGUAGES"]:
+        return g.user['locale']
 
-    header_locale =request.header.get('locale', '')
-    if header_locale in app.config['LANGUAGES']:
+    header_locale = request.headers.get('locale', '')
+    if header_locale in app.config["LANGUAGES"]:
         return header_locale
 
     return request.accept_languages.best_match(app.config["LANGUAGES"])
@@ -65,7 +65,7 @@ def get_locale() -> str:
 def get_index() -> str:
     """The home/index page.
     """
-    return render_template('5-index.html')
+    return render_template('6-index.html')
 
 
 if __name__ == '__main__':
