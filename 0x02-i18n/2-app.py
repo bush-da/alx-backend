@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Flask module to server the static page"""
 from flask import Flask, render_template
-from flask_babel import Babel
+from flask_babel import Babel, gettext
 
 
 app = Flask(__name__)
@@ -29,7 +29,7 @@ def get_locale():
 @app.route('/')
 def home():
     """home page"""
-    return render_template('0-index.html')
+    return render_template('2-index.html')
 
 
 if __name__ == "__main__":
